@@ -1,0 +1,8 @@
+diffusers>=0.30.0
+transformers
+accelerate
+safetensors
+huggingface_hub
+trimesh
+numpy
+pillow

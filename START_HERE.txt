@@ -1,0 +1,71 @@
+Local Text to 3D
+================
+
+Install and run this on your own computer. The Blender addon talks to
+http://127.0.0.1:8765 (worker) and, if you use the GUI Agent,
+http://127.0.0.1:8766 (sidecar) on that same machine.
+
+Those ports are local defaults. They are not an address for someone else's
+computer.
+
+Share safely
+------------
+Share the code or a release. Do not share remote access.
+Do not connect the addon to someone else's computer.
+Do not port-forward 8765 or 8766.
+Do not share your public IP, LAN IP, or Tailscale IP.
+Each install binds to 127.0.0.1 only.
+
+Windows
+-------
+1. Put this folder anywhere you like, for example C:\path\to\LocalText3D
+2. Double-click START.bat in that folder.
+   First run downloads PyTorch + Shap-E (several GB). Leave the window open.
+   If something fails, the window stays open so you can read the error.
+   Keep that window open while using Blender. Closing it stops the worker.
+   The worker listens on http://127.0.0.1:8765 on this computer only.
+3. In Blender 5.1: Edit -> Preferences -> Get Extensions -> Install from Disk
+   Choose the localtext3d-<version>.zip in dist\ (created by START.bat; the
+   exact file name is printed in the START.bat window).
+   Turn Online Access on. Leave Worker URL at http://127.0.0.1:8765.
+4. Press N in the 3D view -> Text to 3D -> Engine: Shap-E -> Generate.
+
+TRELLIS (higher quality, Windows native)
+-----------------------------------------
+One-time install (several GB, Python 3.10 venv), from the same folder:
+
+    py -3.13 scripts\setup_trellis.py
+
+Then double-click START.bat again. Check Worker should list shap_e and trellis.
+In the panel set Engine to TRELLIS (text-large is a fit for a 16 GB card).
+
+You need 64-bit Python 3.13 from python.org with "Add python.exe to PATH".
+TRELLIS setup also needs Python 3.10 (installed automatically via uv if needed).
+You do not need Linux or WSL.
+
+Linux
+-----
+From your clone, for example /path/to/LocalText3D:
+
+    python3 scripts/run_all.py
+
+or:
+
+    ./start.sh
+
+Then install dist/localtext3d-<version>.zip in Blender 5.1 and keep the
+Worker URL at http://127.0.0.1:8765. Turn Online Access on.
+
+GUI Agent (optional, same computer)
+------------------------------------
+    py -3.13 scripts\setup_agent.py
+    .\.venv-agent\Scripts\python.exe -m agent serve
+
+Or double-click "Setup GUI Agent.bat", then "Start GUI Agent.bat".
+Linux: python3 scripts/setup_agent.py && .venv-agent/bin/python -m agent serve
+
+The sidecar listens on http://127.0.0.1:8766. In the addon, Sidecar URL stays
+at that address. Learn from Video copies a local file into your agent dataset
+(~/LocalText3D/agent_dataset) and will not open videos elsewhere on disk.
+
+See README.md for the full setup and the Share safely rules.

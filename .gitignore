@@ -1,0 +1,35 @@
+# LocalText3D ignores
+.venv/
+.venv-trellis/
+.venv-agent/
+vendor/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.zip
+_restore_pre_today.tgz
+debug-*.log
+
+# Secrets / local credentials (never commit). .env.example is the generic template.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+id_rsa*
+credentials.json
+secrets.json
+
+# Local runtime and prefs that can store absolute paths or account details
+agent_dataset/
+episodes.jsonl
+memory.jsonl
+last_session.json
+*.blend
+*.blend1
+agent/templates/*.png
+agent/templates/*.jpg
+agent/templates/*.jpeg
+agent/templates/*.webp

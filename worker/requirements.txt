@@ -1,0 +1,12 @@
+# The worker HTTP server itself is stdlib-only.
+# Install at least one engine extra below in the same environment.
+
+# Shap-E (lighter, draft quality):
+#   py -3.13 scripts\setup_worker.py
+#
+# TRELLIS + Shap-E on Windows (Python 3.10 wheels, several GB):
+#   py -3.13 scripts\setup_trellis.py
+#   then START.bat / scripts\run_all.py --skip-setup
+#
+# Or one shot:
+#   py -3.13 scripts\run_all.py --with-trellis
